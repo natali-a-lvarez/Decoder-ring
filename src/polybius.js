@@ -4,10 +4,100 @@
 // of the anonymous function on line 6
 
 const polybiusModule = (function () {
-  // you can add any code you want within this function scope
+  const polybiusSquareEncode = {
+    a: 11,
+    b: 21,
+    c: 31,
+    d: 41,
+    e: 51,
+    f: 12,
+    g: 22,
+    h: 32,
+    i: 42,
+    j: 42,
+    k: 52,
+    l: 13,
+    m: 23,
+    n: 33,
+    o: 43,
+    p: 53,
+    q: 14,
+    r: 24,
+    s: 34,
+    t: 44,
+    u: 54,
+    v: 15,
+    w: 25,
+    x: 35,
+    y: 45,
+    z: 55,
+  };
+
+  const polybiusSquareDecode = {
+    11: "a",
+    21: "b",
+    31: "c",
+    41: "d",
+    51: "e",
+    12: "f",
+    22: "g",
+    32: "h",
+    42: "(i/j)",
+    52: "k",
+    13: "l",
+    23: "m",
+    33: "n",
+    43: "o",
+    53: "p",
+    14: "q",
+    24: "r",
+    34: "s",
+    44: "t",
+    54: "u",
+    15: "v",
+    25: "w",
+    35: "x",
+    45: "y",
+    55: "z",
+  };
+
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function polybius(input, encode = true) {
-    // your solution code here
+    //make input lower case
+    input = input.toLowerCase();
+    //create result string
+    let result = "";
+
+    //encoding
+    //leave spaces as is
+    if (encode === true) {
+      for (let i = 0; i < input.length; i++) {
+        //loop through encode object and add each number to string
+        for (let letter in polybiusSquareEncode) {
+          // console.log(polybiusSquareEncode[letter]);
+          if (input[i] === letter) {
+            result += polybiusSquareEncode[input[i]];
+          }
+        }
+      }
+    }
+
+    //decoding
+    //leave spaces as is
+    if (encode === false) {
+      //if string is odd return false
+      if (input.length / 2 != 0) return false;
+      //group into twos
+      let groupOfTwos = input.match(/..?/g);
+      console.log(groupOfTwos);
+
+      //loop through decode object
+      //loop through groups array, if input matches num add it to results array
+    }
+
+    console.log(result);
+    return result;
   }
 
   return {
