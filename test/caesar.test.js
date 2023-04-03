@@ -27,12 +27,31 @@ describe("errors", () => {
   });
 });
 
-describe("caesarEncript", () => {
-  it("returns a string", () => {
-    const input = "hello";
+describe("caesarCipher", () => {
+  it("ignores capital letters", () => {
+    const input = "HeLlo";
     const shift = 4;
     const actual = caesar(input, shift);
+    const expected = "lipps";
 
-    expect(actual).to.be.a("string");
+    expect(actual).to.equal(expected);
+  });
+
+  it("handles shifts that go past the end of the alphabet", () => {
+    const input = "zebra magazine";
+    const shift = 3;
+    const actual = caesar(input, shift);
+    const expected = "cheud pdjdclqh";
+
+    expect(actual).to.equal(expected);
+  });
+
+  it("maintains spaces and other nonalphabetic symbols in the message", () => {
+    const input = "Hello !";
+    const shift = 4;
+    const expected = "lipps !";
+    const actual = caesar(input, shift);
+
+    expect(actual).to.equal(expected);
   });
 });
