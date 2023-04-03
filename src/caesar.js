@@ -8,31 +8,34 @@ const caesarModule = (function () {
     //error handling
     if (!shift || shift === 0 || shift < -25 || shift > 25) return false;
 
+    if (encode === false) {
+      shift *= -1;
+    }
+
     //create variables
     input = input.toLowerCase();
     let result = "";
     let charCode = 0;
-    const format = /[ `!@#$%&*_+-;':",.?~]/;
+    const letters = "abcdefghijklmnopqrstuvwxyz";
 
     //loop over each letter to shift
     for (let i = 0; i < input.length; i++) {
-      //when encoding
-      if (
-        (encode = true) &&
-        input[i] != " " &&
-        format.test(input[i] === false)
-      ) {
-        //ignore if its punctuation
+      const letter = input[i].toLowerCase();
+      if (letters.includes(letter)) {
+        let shiftedIndex = letters.indexOf(letter) + shift;
+
         //wrap alphabet
-        charCode = input[i].charCodeAt() + shift;
-        result += String.fromCharCode(charCode);
-      } else if (input[i] === " ") {
-        result += " ";
-      }
-      if ((encode = false)) {
-        //when decoding
-        //ignore spaces
-        //wrap alphabet
+        if (shiftedIndex > 25) {
+          shiftedIndex += -26;
+        }
+        if (shiftedIndex < 0 && shiftedIndex > -25) {
+          //make negative shift possible
+          shiftedIndex += 26;
+        }
+        result += letters[shiftedIndex];
+      } else {
+        // ignore special characters and spaces
+        result += letter;
       }
     }
     return result;
