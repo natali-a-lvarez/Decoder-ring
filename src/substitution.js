@@ -19,7 +19,7 @@ const substitutionModule = (function () {
     regularAlphabet = [...regularAlphabet];
     alphabet = [...alphabet];
 
-    // make an object that has the regual alphabet as keys and the new one as values
+    // make an object that has the regular alphabet as keys and the new one as values
     let result = {};
     result = Object.assign(
       ...regularAlphabet.map((l, i) => ({ [l]: alphabet[i] }))
