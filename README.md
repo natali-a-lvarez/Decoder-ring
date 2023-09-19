@@ -1,8 +1,11 @@
 # Decoder-ring
 
+This website features three powerful ciphers - Caesar Shift, Polybius Square, and Substitution - each with the option to encode and decode your messages.
+
 ![decoder ring](https://user-images.githubusercontent.com/112902224/233242495-16b2b197-3182-46fa-b747-da73b3068edf.png)
 
-This website features three powerful ciphers - Caesar Shift, Polybius Square, and Substitution - each with the option to encode and decode your messages.
+### Live Application
+You can access the live application by following this link: [Decoder Ring](https://natali-a-lvarez.github.io/Decoder-ring/)
 
 ### Caesar Shift
 The Caesar Shift cipher, one of the oldest and most well-known ciphers in history, allows you to shift each letter in your message by a specified number of positions in the alphabet. This makes your message virtually unreadable without the key.
